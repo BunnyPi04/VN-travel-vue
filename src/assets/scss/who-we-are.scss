@@ -1,0 +1,108 @@
+.who-we-are {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  padding: 64px 0;
+
+  @include breakpoint-down(tablet) {
+    padding: 32px 0 48px;
+  }
+
+  >div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  h3 {
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'Antonio';
+    line-height: 69px;
+    text-transform: uppercase;
+    color: $golden;
+    margin-bottom: 22px;
+
+    @include breakpoint-down(tablet) {
+      font-size: 40px;
+      line-height: 58px;
+      margin-bottom: 28px;
+    }
+
+    .who {
+      color: $ink;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 30px;
+
+    @include breakpoint-down(tablet) {
+      font-size: 13px;
+    }
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+  .w-img {
+    justify-content: flex-start;
+
+    img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    &:first-of-type {
+      img {
+        width: 67%;
+      }
+    }
+
+    &.w-60 {
+      width: 67%;
+
+      @include breakpoint-down(tablet) {
+        width: 100%;
+      }
+    }
+  }
+
+  .who-1 {
+    width: 67%;
+    margin: 0 auto;
+
+    @include breakpoint-down(tablet) {
+      width: 100%;
+    }
+
+    p {
+      &:last-child {
+        @include breakpoint-down(tablet) {
+          margin-bottom: 68px;
+        }
+      }
+    }
+  }
+
+  .who-2 {
+    width: 80%;
+    justify-content: center;
+
+    @include breakpoint-down(tablet) {
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 30px;
+      &:last-child {
+        @include breakpoint-down(tablet) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,49 +1,29 @@
 <template>
   <div id="app">
-    <HomeBanner />
-    <!-- <router-view></router-view> -->
-    <BestSellingTour />
-    <BestSellingTrip />
-    <QuoteSection />
-    <FeedbackSection />
-    <OurProducts />
-    <PlanTrip />
-    <TravelGuide />
+    <!-- <Menu /> -->
+    <router-view></router-view>
     <Footer />
-    <BackToTop />
   </div>
 </template>
 
 <script>
-import SlickCarousel from 'slick-carousel';
-import HomeBanner from "@/components/home/HomeBanner";
 import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
-import BestSellingTrip from "@/components/home/BestSellingTrip";
-import BestSellingTour from "@/components/home/BestSellingTour";
-import QuoteSection from "@/components/home/QuoteSection";
-import FeedbackSection from "@/components/home/FeedbackSection";
-import OurProducts from "@/components/home/OurProducts";
-import PlanTrip from "@/components/home/PlanTrip";
-import TravelGuide from "@/components/home/TravelGuide";
+import Menu from "@/components/Menu";
 
 export default {
   name: "App",
   components: {
-    HomeBanner,
-    Footer,
-    BackToTop,
-    BestSellingTrip,
-    BestSellingTour,
-    QuoteSection,
-    FeedbackSection,
-    OurProducts,
-    PlanTrip,
-    TravelGuide
+    Menu,
+    Footer
   }
 };
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/main.scss';
+@import "@/assets/scss/main.scss";
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 </style>

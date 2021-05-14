@@ -1,0 +1,67 @@
+.why-us {
+  background-color: $light-blue-bg;
+  padding-bottom: 64px;
+
+  @include breakpoint-down(tablet) {
+    padding-bottom: 40px;
+  }
+
+  @include breakpoint-down(phone) {
+    display: none;
+  }
+
+  .page-section-head {
+    h3 {
+      color: $golden;
+      text-transform: uppercase;
+    }
+  }
+
+  .our-value {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+    justify-content: center;
+    // align-items: center;
+    text-align: center;
+
+    .value {
+      &-item {
+        display: inline;
+        justify-content: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 170px auto auto;
+        align-items: start;
+
+        @include breakpoint-down(tablet) {
+          grid-template-rows: 170px auto auto;
+        }
+
+        p {
+          font-size: 14px;
+          line-height: 22px;
+          font-weight: 400;
+          color: $black;
+        }
+      }
+
+      &__title {
+        h6 {
+          font-size: 18px;
+          color: $ink;
+          font-weight: 600;
+          margin-top: 24px;
+          margin-bottom: 15px;
+          line-height: 25px;
+
+          @include breakpoint-down(tablet) {
+            font-size: 14px;
+            line-height: 19px;
+            margin-top: 24px;
+            margin-bottom: 13px;
+          }
+        }
+      }
+    }
+  }
+}

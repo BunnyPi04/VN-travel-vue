@@ -4,6 +4,7 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -13,18 +14,28 @@ export default new Router({
           path: "",
           name: "home",
           component: () => import("@/views/HomeGlobal")
-        },
-        {
-          path: "my-feed",
-          name: "home-my-feed",
-          component: () => import("@/views/HomeMyFeed")
-        },
-        {
-          path: "tag/:tag",
-          name: "home-tag",
-          component: () => import("@/views/HomeTag")
         }
+        // {
+        //   path: "my-feed",
+        //   name: "home-my-feed",
+        //   component: () => import("@/views/HomeMyFeed")
+        // },
+        // {
+        //   path: "tag/:tag",
+        //   name: "home-tag",
+        //   component: () => import("@/views/HomeTag")
+        // }
       ]
+    },
+    {
+      name: "about-us",
+      path: "/about-us/",
+      component: () => import("@/views/AboutUs")
+    },
+    {
+      name: "destinations",
+      path: "/destinations/",
+      component: () => import("@/views/Destination")
     },
     {
       name: "login",
