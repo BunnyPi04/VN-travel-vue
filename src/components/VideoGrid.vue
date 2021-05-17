@@ -1,19 +1,51 @@
 <template>
-  <div class="video-grid-section">
-    <div class="collapse-title" @click="collapse = !collapse">
-      <a class="btn btn-primary">
-        <h4>Videos</h4>
-      </a>
-      <!--       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
-        Button with data-target
-      </button> -->
-    </div>
-    <div class="" :class="collapse ? 'slide-down' : ''" id="collapseVideo">
-      <div>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-        terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-        labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
+  <div class="video-grid-section collapse-custom">
+    <label class="collapse-title">
+      <input type="checkbox" v-on:change="toggle = !toggle" :value="toggle" />
+      <span>Videos</span>
+    </label>
+
+    <div class="wrapper">
+      <transition name="slide">
+        <div class="video-grid grid-container" v-if="toggle">
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+          <div class="video-item grid-item">
+            <div class="video-item__image">
+              <img src="@/assets/images/app/video-image.png" />
+            </div>
+            <div class="video-item__title">Hanoi</div>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -22,19 +54,52 @@ export default {
   components: {},
   data() {
     return {
-      collapse: false
+      toggle: true
     };
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
-.collapse {
-  transition-duration: 0.5s;
-  transition: all;
-  transform: translateY(0);
+
+.video-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 64px;
+
+  .video {
+    &-item {
+      &__image {
+        border-radius: 4px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &__title {
+        text-align: center;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 16px;
+        margin-bottom: 2px;
+        color: $dark-blue;
+      }
+    }
+  }
 }
-.slide-down {
-  transform: translateY(100px);
+.show {
+  background-color: red;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.6s ease;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 </style>

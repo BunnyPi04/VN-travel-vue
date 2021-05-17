@@ -1445,6 +1445,57 @@ a {
         }
     }
 }
+.collapse-custom {
+  overflow: hidden;
+
+  .collapse {
+    &-title {
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 22px;
+      color: $ink;
+      display: block;
+      position: relative;
+      border-bottom: 1px solid $ink;
+      padding: 13px 0;
+      margin-bottom: 24px;
+
+      &:after {
+        content: '';
+        height: 2px;
+        width: 16px;
+        background-color: $ink;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 23px;
+      }
+
+      input {
+        display: none;
+      }
+    }
+  }
+
+  .grid {
+    &-container {
+      display: grid;
+      grid-gap: 24px;
+    }
+
+    &-item {
+    }
+  }
+}
+.slide-enter-active, .slide-leave-active  {
+  transition: all .6s ease;
+}
+.slide-enter, .slide-leave-to
+{
+  transform: translateY(-100%);
+  opacity: 0;
+}
 
 
 @media all and (transform-3d), (-webkit-transform-3d) {
