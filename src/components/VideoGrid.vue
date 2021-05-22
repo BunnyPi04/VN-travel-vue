@@ -66,6 +66,14 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 64px;
 
+  @include breakpoint-down(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint-down(phone) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .video {
     &-item {
       &__image {
@@ -86,6 +94,13 @@ export default {
         margin-top: 16px;
         margin-bottom: 2px;
         color: $dark-blue;
+
+        @include breakpoint-down(tablet) {
+          font-size: 13px;
+          line-height: 20px;
+          margin-top: 8px;
+          margin-bottom: -2px;
+        }
       }
     }
   }

@@ -4,6 +4,7 @@
       title="Destination"
       type="destination"
       quote="Discover the most attractive destinations of Southeast Asia"
+      img="app/sub-bg2.png"
     />
     <div class="heri-container">
       <div class="heri-tabs">
@@ -33,12 +34,18 @@
         <div class="content-switch">
           <div v-if="switcher == 1" class="">
             <IntroDestination :title="introTitle1" :content="content1" />
+            <TourPagination :tourList="tourList" />
+            <InformationList :informationList="informationList" />
           </div>
           <div v-else-if="switcher == 2" class="">
             <IntroDestination :title="introTitle2" :content="content1" />
+            <TourPagination :tourList="tourList" />
+            <InformationList />
           </div>
           <div v-else class="">
             <IntroDestination :title="introTitle3" :content="content1" />
+            <TourPagination :tourList="tourList" />
+            <InformationList />
           </div>
         </div>
       </div>
@@ -58,7 +65,11 @@ import BackToTop from "@/components/BackToTop";
 import CityHighlightGrid from "@/components/CityHighlightGrid";
 import VideoGrid from "@/components/VideoGrid";
 import GalleryGrid from "@/components/GalleryGrid";
-import IntroDestination from "@/components/IntroDestination";
+import IntroDestination from "@/components/destination/IntroDestination";
+import TourPagination from "@/components/TourPagination";
+import InformationList from "@/components/destination/InformationList";
+import tourList from "@/sampleData/tourList";
+import informationList from "@/sampleData/informationList";
 
 export default {
   components: {
@@ -68,6 +79,8 @@ export default {
     IntroDestination,
     CityHighlightGrid,
     GalleryGrid,
+    TourPagination,
+    InformationList,
     VideoGrid
   },
   data() {
@@ -77,10 +90,13 @@ export default {
       introTitle2: "Central Vietnam",
       introTitle3: "South Vietnam",
       content1:
-        "<p>Modern day Vietnam is a feast for the senses and the sights, tastes, smells and sounds you will experience during a visit to Vietnam will bring you a profound feeling of peace, optimism and exuberance.</p><p>It’s amazing to think that back in 1969 Danang airport was the busiest ‘single runway’ airport in the world. This extraordinary fact highlights the awful scale of one of the 20th century’s most notorious wars.</p><p>However, today the country’s 3,444 kilometre coastline boasts some of the world’s most luxurious resorts. Danang, along with a handful of other locations, has a gleaming new airport. It enables visitors to discover a dynamic land rich in culture with some of the freshest and tastiest food anywhere in the world.</p><p>From the latticed mountains in the North, the dramatic rivers and caves in the Centre and the pristine beaches and tropical islands in the South, Vietnam’s natural landscape has something for anyone wanting to find a revitalizing escape.</p>"
+        "<p>Modern day Vietnam is a feast for the senses and the sights, tastes, smells and sounds you will experience during a visit to Vietnam will bring you a profound feeling of peace, optimism and exuberance.</p><p>It’s amazing to think that back in 1969 Danang airport was the busiest ‘single runway’ airport in the world. This extraordinary fact highlights the awful scale of one of the 20th century’s most notorious wars.</p><p>However, today the country’s 3,444 kilometre coastline boasts some of the world’s most luxurious resorts. Danang, along with a handful of other locations, has a gleaming new airport. It enables visitors to discover a dynamic land rich in culture with some of the freshest and tastiest food anywhere in the world.</p><p>From the latticed mountains in the North, the dramatic rivers and caves in the Centre and the pristine beaches and tropical islands in the South, Vietnam’s natural landscape has something for anyone wanting to find a revitalizing escape.</p>",
+      tourList: tourList["tourList"],
+      informationList: informationList
     };
   },
-  mounted() {}
+  mounted() {},
+  created() {}
 };
 </script>
 <style lang="scss" scoped>
@@ -94,6 +110,10 @@ export default {
   margin-top: 32px;
   margin-bottom: 32px;
 
+  @include breakpoint-down(phone) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   &-item {
     text-align: center;
     padding: 21px;
@@ -106,6 +126,12 @@ export default {
     transition-duration: 0.5s;
     transition-property: all;
     background: linear-gradient(130.3deg, white -5.64%, white 104.06%);
+    font-size: 16px;
+
+    @include breakpoint-down(tablet) {
+      font-size: 13px;
+      padding: 15px;
+    }
 
     &:hover {
       box-shadow: $box-shadow;

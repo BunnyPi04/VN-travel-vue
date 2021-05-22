@@ -3,12 +3,7 @@
     <div class="">
       <div id="sub-banner" class="">
         <div class="sub-banner-image">
-          <img v-if="(type = 'about')" src="@/assets/images/app/sub-bg.png" />
-          <img
-            v-else-if="(type = 'destination')"
-            src="@/assets/images/app/sub-bg2.png"
-          />
-          <img v-else src="@/assets/images/app/sub-bg.png" />
+          <img :src="require(`@/assets/images/${img}`)" />
         </div>
         <div class="banner-text">
           <div class="insprite">{{ title }}</div>
@@ -37,6 +32,10 @@ export default {
     type: {
       type: String,
       default: null
+    },
+    img: {
+      type: String,
+      default: "app/sub-bg.png"
     }
   }
 };

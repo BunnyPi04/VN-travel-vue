@@ -36,6 +36,28 @@ export default new Router({
       name: "destinations",
       path: "/destinations/",
       component: () => import("@/views/Destination")
+      // children: [
+      //   {
+      //     name: "city-highlight",
+      //     path: "/city-highlight",
+      //     component: () => import("@/views/CityHighlight")
+      //   }
+      // ]
+    },
+    {
+      name: "city-highlight",
+      path: "/city-highlight/",
+      component: () => import("@/views/CityHighlight")
+    },
+    {
+      name: "plan-your-trip",
+      path: "/plan-your-trip/",
+      component: () => import("@/views/PlanYourTrip")
+    },
+    {
+      name: "news-detail",
+      path: "/news/:slug",
+      component: () => import("@/views/NewsDetail")
     },
     {
       name: "login",

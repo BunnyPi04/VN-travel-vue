@@ -127,11 +127,20 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   margin-bottom: 24px;
 
+  @include breakpoint-down(phone) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .city-highlight {
     &-item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 24px;
+
+      @include breakpoint-down(tablet) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 16px;
+      }
 
       &__image {
         border-radius: 4px;
@@ -158,6 +167,10 @@ export default {
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+
+        @include breakpoint-down(tablet) {
+          font-size: 14px;
+        }
       }
 
       &__excerpt {
@@ -168,6 +181,11 @@ export default {
         -webkit-box-orient: vertical;
         overflow: hidden;
         flex-grow: 1;
+
+        @include breakpoint-down(tablet) {
+          font-size: 13px;
+          margin-bottom: 10px;
+        }
       }
 
       &__explore {

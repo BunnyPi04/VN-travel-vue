@@ -4,6 +4,7 @@
       title="About us"
       type="about"
       quote="Some information to help you know us more"
+      img="app/sub-bg.png"
     />
     <WhoWeAre />
     <WhyUs />

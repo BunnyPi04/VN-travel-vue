@@ -45,6 +45,7 @@ footer {
             color: white;
         }
     }
+
     .footer {
         &-logo {
             img {
@@ -83,6 +84,10 @@ footer {
             @include breakpoint-down(tablet) {
                 grid-template-columns: repeat(2, 1fr);
                 grid-row-gap: 0;
+            }
+
+            @include breakpoint-down(phone) {
+                grid-template-columns: repeat(1, 1fr);
             }
         }
 

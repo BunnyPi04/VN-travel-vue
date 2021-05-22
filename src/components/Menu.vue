@@ -12,7 +12,9 @@
             <a class="register-btn" href="#">Register</a>
           </li>
           <li>
-            <h2 class="section-title menu-1"><a href="#menu-intro">Home</a></h2>
+            <h2 class="section-title menu-1">
+              <router-link to="/about-us/">Home</router-link>
+            </h2>
           </li>
           <li>
             <h2 class="section-title">
@@ -31,7 +33,7 @@
           </li>
           <li>
             <h2 class="section-title">
-              <a href="#menu-testimonial">Plan your trip</a>
+              <router-link to="/plan-your-trip/">Plan your trip</router-link>
             </h2>
           </li>
           <li>
@@ -62,7 +64,9 @@
         </h1>
       </div>
       <div class="menu-frame">
-        <div class="menu-item active"><a href="#menu-intro">Home</a></div>
+        <div class="menu-item active">
+          <router-link to="/">Home</router-link>
+        </div>
         <div class="menu-item">
           <router-link to="/about-us/">About Us</router-link>
         </div>
@@ -71,7 +75,7 @@
         </div>
         <div class="menu-item"><a href="#menu-space">Package Tour</a></div>
         <div class="menu-item">
-          <a href="#menu-testimonial">Plan your trip</a>
+          <router-link to="/plan-your-trip/">Plan your trip</router-link>
         </div>
         <div class="menu-item"><a href="#menu-info">News</a></div>
         <div class="menu-item"><a href="#menu-info">Contact Us</a></div>

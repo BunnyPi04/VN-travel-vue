@@ -80,6 +80,15 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   margin-bottom: 64px;
 
+  @include breakpoint-down(tablet) {
+    grid-gap: 16px !important;
+    margin-bottom: 24px;
+  }
+
+  @include breakpoint-down(phone) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .gallery {
     &-item {
       &__image {
