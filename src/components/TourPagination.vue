@@ -7,14 +7,35 @@
 
     <div class="wrapper">
       <transition name="slide">
-        <div>
-          <!-- <VueSelect class="vue-select2" name="select2"
-            :options="options2"
-            >
-          </VueSelect> -->
+        <div class="">
+          <!-- <VueSelect :options="options2"></VueSelect> -->
+          <div class="filter-bar">
+            <div class="filter-bar__item">
+              <div class="filter-bar__label">Tour duration</div>
+              <VueSelect
+                class="vue-select2"
+                name="select2"
+                :searchable="false"
+                :single="true"
+                :options="options1"
+              >
+              </VueSelect>
+            </div>
+            <div class="filter-bar__item">
+              <div class="filter-bar__label">Tour start at</div>
+              <VueSelect
+                class="vue-select2"
+                name="select2"
+                :searchable="false"
+                :single="true"
+                :options="options2"
+              >
+              </VueSelect>
+            </div>
+          </div>
           <div class="tour-list-container grid-container" v-if="toggle">
             <div
-              v-for="tourItem in tourList"
+              v-for="tourItem in viewList"
               class="tour-item"
               :key="tourItem.id"
             >
@@ -28,8 +49,8 @@
                 />
               </div>
               <div class="product__content">
-                <div class="product__content__title">
-                  {{ tourItem.name }}
+                <div class="product__content__title text-left">
+                  {{ tourItem.id }} {{ tourItem.name }}
                 </div>
                 <div class="product__content__rate">
                   <span class="fa fa-star checked"></span>
@@ -84,79 +105,127 @@
                     <button class="golden-gradient-button">Book Now</button>
                   </div>
                   <div class="text-detail text-left">
-                    <a href="#">Tour detail</a> →
+                    <router-link to="/destinations/city-highlight"
+                      >Tour detail</router-link
+                    >
+                    →
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <VPagination :pages="pages" :currentPage.sync="currentPage" /> -->
           </div>
+          <pagination
+            :total-pages="totalPage"
+            :total="tourList.length"
+            :per-page="perPage"
+            :current-page="currentPage"
+            :maxVisibleButtons="5"
+            @pagechanged="onPageChange"
+          />
+          <!-- <Pagination :totalPages="totalPage" :currentPage="currentPage" :total="tourList.length" @pagechanged="onPageChange" :per-page="perPage"/> -->
         </div>
       </transition>
     </div>
   </div>
 </template>
 <script>
-import VPagination from "./VPagination";
-// import VueSelect from "vue-select2";
+import Pagination from "@/components/Pagination";
+import VueSelect from "vue-select";
 export default {
   components: {
-    VPagination
-    // VueSelect
+    Pagination,
+    VueSelect
   },
   props: {
     tourList: [Array]
-    // itemsPerPage: {
-    //   type: Number,
-    //   required: false,
-    //   default: 10
-    // }
   },
   data() {
     return {
       toggle: true,
-      options2: [
+      options1: [
         {
-          text: "name1",
+          label: "name1",
           value: "value1"
         },
         {
-          text: "name2",
+          label: "name2",
           value: "value2"
         },
         {
-          text: "name3",
+          label: "name3",
           value: "value3"
         }
-      ]
-      // currentPage: 1
+      ],
+      options2: [
+        {
+          label: "Hanoi",
+          value: "value1"
+        },
+        {
+          label: "Da Nang",
+          value: "value2"
+        },
+        {
+          label: "HCM",
+          value: "value3"
+        },
+        {
+          label: "Da lat",
+          value: "value3"
+        }
+      ],
+      viewList: [],
+      perPage: 7,
+      currentPage: 1
     };
   },
   computed: {
-    // listConfig() {
-    //   const filters = {
-    //     offset: (this.currentPage - 1) * this.itemsPerPage,
-    //     limit: this.itemsPerPage
-    //   };
-    // },
-    // pages() {
-    //   if (this.tourList.length <= this.itemsPerPage) {
-    //     return [];
-    //   }
-    //   return [
-    //     ...Array(Math.ceil(this.tourList.length / this.itemsPerPage)).keys()
-    //   ].map(e => e + 1);
-    // },
+    totalPage() {
+      return Math.ceil(this.tourList.length / this.perPage);
+    }
   },
-  watch: {
-    // currentPage(newValue) {
-    //   this.listConfig.filters.offset = (newValue - 1) * this.itemsPerPage;
-    // },
+  watch: {},
+  created() {
+    let range = [];
+    this.currentPage = 1;
+
+    let offset = this.perPage * (this.currentPage - 1);
+
+    let last =
+      offset + this.perPage < this.tourList.length - 1
+        ? offset + this.perPage - 1
+        : this.tourList.length;
+
+    for (let i = offset; i <= last; i += 1) {
+      range.push(this.tourList[i]);
+    }
+
+    this.viewList = range;
+  },
+  methods: {
+    onPageChange(page) {
+      let range = [];
+      this.currentPage = page;
+
+      let offset = this.perPage * (this.currentPage - 1);
+
+      let last =
+        offset + this.perPage < this.tourList.length - 1
+          ? offset + this.perPage - 1
+          : this.tourList.length - 1;
+
+      for (let i = offset; i <= last; i += 1) {
+        range.push(this.tourList[i]);
+      }
+
+      this.viewList = range;
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
+@import "vue-select/src/scss/vue-select.scss";
 .tour-list-container {
   grid-template-columns: repeat(4, 1fr);
   padding: 0 5px 10px;
@@ -203,6 +272,118 @@ export default {
       background-color: white;
       border-radius: 4px;
       overflow: hidden;
+    }
+  }
+}
+::v-deep .v-select {
+  min-width: 160px;
+  position: relative;
+
+  .vs {
+    &__dropdown-toggle {
+      // position: relative;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      padding: 4px 17px 0 3px;
+    }
+
+    &__selected-options {
+      display: flex;
+      flex-basis: 100%;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      padding: 0 2px;
+      position: relative;
+    }
+
+    &__dropdown-toggle {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: flex;
+      background: none;
+      border: 1px solid rgba(60, 60, 60, 0.26);
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: normal;
+      min-height: 40px;
+    }
+
+    &__search,
+    .vs__search:focus {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      line-height: 1.4;
+      font-size: 1em;
+      border: 1px solid transparent;
+      border-left: none;
+      outline: none;
+      margin: 4px 0 0;
+      padding: 0 7px;
+      background: none;
+      box-shadow: none;
+      width: 0;
+      max-width: 100%;
+      flex-grow: 1;
+      z-index: 1;
+    }
+
+    &__selected {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border-color: transparent;
+      border-radius: 4px;
+      color: $black;
+      line-height: 1.4;
+      padding: 0 0.25em;
+      z-index: 0;
+      padding: 10px;
+    }
+
+    &__clear {
+      fill: rgba(60, 60, 60, 0.5);
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    &__open-indicator {
+      fill: rgba(60, 60, 60, 0.5);
+      transform: scale(1);
+      transition: transform 0.15s cubic-bezier(1, -0.115, 0.975, 0.855);
+      transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);
+    }
+  }
+
+  ul {
+    list-style: none;
+    border: 1px solid rgba(60, 60, 60, 0.26);
+    padding-left: 0px;
+    margin-bottom: 0;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    width: 100%;
+    background-color: white;
+
+    li {
+      color: $ink !important;
+      cursor: pointer;
+      text-align: left;
+      padding: 7px 10px;
+
+      &:hover {
+        background-color: $light-blue-bg;
+      }
     }
   }
 }

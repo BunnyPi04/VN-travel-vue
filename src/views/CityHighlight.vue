@@ -8,7 +8,7 @@
     <div class="heri-container">
       <div class="breadcrum">
         <router-link to="/">Home / </router-link>
-        <router-link to="/destination/">Destination / </router-link>
+        <router-link to="/destinations/">Destination / </router-link>
         {{ city_info.name }}
       </div>
       <div class="city-content">
@@ -17,6 +17,7 @@
         </div>
         <div class="city-intro" v-html="city_info.content1"></div>
       </div>
+      <CityPagination :cityList="cityList" />
     </div>
     <PlanTrip />
     <BackToTop />
@@ -27,11 +28,14 @@
 import SubBanner from "@/components/SubBanner";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
+import CityPagination from "@/components/destination/CityPagination";
+import cityList from "@/sampleData/cityList";
 
 export default {
   components: {
     SubBanner,
     PlanTrip,
+    CityPagination,
     BackToTop
   },
   data() {
@@ -42,7 +46,8 @@ export default {
         banner: "",
         content1:
           "The capital of Vietnam, Hanoi is the second most populous city in the country with approximately 4 million people. The history and culture of Vietnam is clearly on display. Excellent Vietnamese cuisine, vibrant street-life, contemporary art galleries and French architecture combine to form a unique blend of old and new, Asian and European. Despite recent rapid development, the city has retained much of its traditional identity. Physically the lakes and Old Quarter still retain a wonderful sense of timeless grace and much of its population continues to observe centuries old customs and festivals."
-      }
+      },
+      cityList: cityList["cityList"]
     };
   },
   mounted() {},

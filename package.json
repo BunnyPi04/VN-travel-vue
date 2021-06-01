@@ -12,7 +12,10 @@
     "slick-carousel": "^1.8.1",
     "vue": "^2.6.12",
     "vue-axios": "^2.1.4",
+    "vue-gallery-slideshow": "^1.5.2",
+    "vue-product-carousel": "^1.2.1",
     "vue-router": "^3.5.1",
+    "vue-select": "^3.11.2",
     "vue-select2": "^0.2.6",
     "vue-slick-carousel": "^1.0.6",
     "vuex": "^3.1.1"

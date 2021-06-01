@@ -46,8 +46,13 @@ export default new Router({
     },
     {
       name: "city-highlight",
-      path: "/city-highlight/",
+      path: "/destinations/city-highlight/",
       component: () => import("@/views/CityHighlight")
+    },
+    {
+      name: "city-highlight-detail",
+      path: "/destinations/city-highlight/detail",
+      component: () => import("@/views/CityDetail")
     },
     {
       name: "plan-your-trip",

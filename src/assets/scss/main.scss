@@ -1521,6 +1521,31 @@ a {
     }
 }
 
+.grid-container {
+    display: grid;
+}
+
+.filter-bar {
+    display: flex;
+    flex-direction: columns;
+    margin-bottom: 24px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: 20px;
+
+        &:not(:first-child) {
+            margin-left: 24px;
+        }
+    }
+
+    &__label {
+        margin-right: 24px;
+    }
+}
+
 
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-multi .carousel-inner > .item {
