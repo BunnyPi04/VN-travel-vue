@@ -1,21 +1,57 @@
 <template>
   <div id="destination">
     <SubBanner
-      title="Destination"
-      type="destination"
-      quote="Discover the most attractive destinations of Southeast Asia"
+      title="Package Tour"
+      quote="Discover the hidden beauty of Vietnam"
+      img="app/bg-package.png"
     />
     <div class="heri-container">
       <div class="breadcrum">
         <router-link to="/">Home / </router-link>
-        <router-link to="/destinations/">Destination / </router-link>
-        <router-link to="/destinations/city-highlight/">{{
-          city_info.name
-        }}</router-link>
-        {{ city_info.place }}
+        <router-link to="/package-tour/">Destination / </router-link>
+        {{ tour.name }}
       </div>
-      <div class="city-content">
-        <!-- <ProductCarousel :images="images"></ProductCarousel> -->
+      <div class="package-head">
+        <h2>{{ tour.name }}</h2>
+        <div class="package-info-head">
+          <div class="info-item">
+            <div class="icon">
+              <span class="nsy-icon nsy-calendar"></span>
+            </div>
+            <label>
+              <span class="text-green">{{ tour.duration }}</span>
+            </label>
+          </div>
+          <div class="info-item from">
+            <div class="icon">
+              <span class="nsy-icon nsy-location"></span>
+            </div>
+            <label>
+              <span class="">{{ tour.from }}</span>
+            </label>
+          </div>
+          <div class="info-item">
+            <div class="icon">
+              <span class="nsy-icon nsy-arrow-right"></span>
+            </div>
+            <label>
+              <span class="">{{ tour.to }}</span>
+            </label>
+          </div>
+          <div class="info-item">
+            <div class="tour__rate">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              ({{ tour.rateCount }})
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="package-content">
         <div class="place-carousel">
           <div class="">
             <img :src="showingImage" />
@@ -35,15 +71,14 @@
             </VueSlickCarousel>
           </div>
         </div>
-        <div>
+        <div class="place__price">
           <div class="place__title">
-            <h3>{{ city_info.place }}</h3>
+            <h3>{{ tour.place }}</h3>
           </div>
-          <div class="place__content" v-html="city_info.content"></div>
+          <div class="place__content" v-html="tour.content"></div>
         </div>
       </div>
     </div>
-    <RelatedItems title="Related Places" :itemList="placeList" />
     <PlanTrip />
     <BackToTop />
   </div>
@@ -51,10 +86,8 @@
 
 <script>
 import SubBanner from "@/components/SubBanner";
-import RelatedItems from "@/components/RelatedItems";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
-import CityPagination from "@/components/destination/CityPagination";
 // import ProductCarousel from 'vue-product-carousel';
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
@@ -65,20 +98,21 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   components: {
     SubBanner,
-    RelatedItems,
     PlanTrip,
-    CityPagination,
-    // ProductCarousel,
     VueSlickCarousel,
     BackToTop
   },
   data() {
     return {
       switcher: 1,
-      city_info: {
-        name: "Hanoi",
+      tour: {
+        name: "Quy Nhon Beach Escape",
+        duration: "21 Days",
+        from: "Hanoi, Vietnam",
+        to: "Quy Nhơn, Vietnam",
+        rate: "5",
+        rateCount: "124",
         banner: "",
-        place: "Hoan Kiem lake",
         content:
           "<p>Legend claims in the mid-15th century Heaven sent Emperor Le Thai To (Le Loi) a magical sword which he used to drive the Chinese from Vietnam. After the war a giant golden turtle grabbed the sword and disappeared into the depths to restore the sword to its divine owners, inspiring the name Ho Hoan Kiem (Lake of the Restored Sword). Every morning at around 6am local residents practise traditional t’ai chi on the shore.</p><p>Ngoc Son Temple sits on an island in Hoan Kiem lake. The ramshackle Thap Rua (Turtle Tower), on an islet near the southern end, is topped with a red star and is often used as an emblem of Hanoi.</p>"
       },
@@ -146,7 +180,7 @@ export default {
         dots: false,
         infinite: true,
         speed: 300,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 3,
         autoplay: true,
         dotsClass: "slick-dots",
@@ -187,55 +221,113 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
-.city-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 24px;
-
-  @include breakpoint-down(tablet) {
-    grid-template-columns: repeat(1, 1fr);
+.package-head {
+  h2 {
+    color: $dark-blue;
+    font-family: "Antonio";
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 46px;
+    text-align: center;
+    margin-bottom: 12.5px;
   }
 
-  .city-banner {
+  .package-info-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 24px;
 
-    img {
-      width: 100%;
-      border-radius: 4px;
-    }
-  }
+    .icon {
+      margin-right: 10px;
 
-  .city-intro {
-    font-size: 14px;
-    margin-bottom: 24px;
-
-    img {
-      max-width: 100%;
-    }
-  }
-
-  .place {
-    &__title {
-      h3 {
-        color: $dark-blue;
-        text-transform: uppercase;
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 22px;
-        margin-top: 15px;
-
-        @include breakpoint-down(tablet) {
-          font-size: 16px;
-          margin-top: 0;
-        }
+      .nsy-icon {
+        width: 24px;
+        height: 24px;
       }
     }
 
-    &__content {
-      font-size: 13px;
+    .info-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 24px;
+      font-size: 14px;
+      line-height: 19px;
+
+      &.from {
+        margin-right: 5px;
+      }
+
+      label {
+        margin-bottom: 0;
+      }
     }
   }
 }
+.package-content {
+  display: flex;
+  gap: 24px;
+
+  .place-carousel {
+    flex: 2;
+  }
+
+  .place {
+    &__price {
+      flex: 1;
+    }
+  }
+}
+// .city-content {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   grid-gap: 24px;
+
+//   @include breakpoint-down(tablet) {
+//     grid-template-columns: repeat(1, 1fr);
+//   }
+
+//   .city-banner {
+//     margin-bottom: 24px;
+
+//     img {
+//       width: 100%;
+//       border-radius: 4px;
+//     }
+//   }
+
+//   .city-intro {
+//     font-size: 14px;
+//     margin-bottom: 24px;
+
+//     img {
+//       max-width: 100%;
+//     }
+//   }
+
+//   .place {
+//     &__title {
+//       h3 {
+//         color: $dark-blue;
+//         text-transform: uppercase;
+//         font-size: 24px;
+//         font-weight: 600;
+//         line-height: 22px;
+//         margin-top: 15px;
+
+//         @include breakpoint-down(tablet) {
+//           font-size: 16px;
+//           margin-top: 0;
+//         }
+//       }
+//     }
+
+//     &__content {
+//       font-size: 13px;
+//     }
+//   }
+// }
 .place-carousel {
   img {
     width: 100%;

@@ -1107,6 +1107,13 @@ a {
     width: 40px;
     height: 40px
 }*/
+::v-deep.slick-prev {
+    &:before {
+        content: '';
+        background-image: url('~@/assets/images/app/icon/arrow_right.svg');
+        background-repeat: no-repeat;
+    }
+}
 .carousel-control-next .nsy-icon, .carousel-control-prev .nsy-icon {
     width: 40px;
     height: 40px;
