@@ -154,6 +154,55 @@ a {
         background-position: center center;
         transform: rotate(180deg);
     }
+
+    &.nsy-ribbon {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_ribbon.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_ribbon.svg');
+    }
+
+    &.nsy-list {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_list.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_list.svg');
+    }
+
+    &.nsy-exclusions {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_exclusions.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_exclusions.svg');
+    }
+
+    &.nsy-inclusions {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_inclusions.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_inclusions.svg');
+    }
+
+    &.nsy-notes {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_notes.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_notes.svg');
+    }
+
+    &.nsy-map {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_map.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_map.svg');
+    }
+
+    &.nsy-notice {
+        background-color: $grey;
+        -webkit-mask: url('~@/assets/images/app/icon/ic_notice.svg') no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-image: url('~@/assets/images/app/icon/ic_notice.svg');
+    }
 }
 
 .grid-md-3 {

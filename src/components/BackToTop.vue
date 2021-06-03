@@ -1,52 +1,58 @@
 <template>
-  <div class="back-to-top" @click="scrollTop();" v-bind:style="{opacity: opacity}">
+  <div
+    class="back-to-top"
+    @click="scrollTop()"
+    v-bind:style="{ opacity: opacity }"
+  >
     <div class="to-top-border">
-      <img class="to-top-arrow" src="@/assets/images/app/icon/top.svg">
+      <img class="to-top-arrow" src="@/assets/images/app/icon/top.svg" />
     </div>
   </div>
 </template>
 <script>
 // import $ from 'jQuery';
 export default {
-  data () {
+  data() {
     return {
       lastScrollPosition: 0,
       opacity: 1
-    }
+    };
   },
-  mounted () {
-    window.addEventListener('scroll', this.onScroll)
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
   },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
   },
   methods: {
-    onScroll () {
-      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+    onScroll() {
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
       if (currentScrollPosition > 0) {
-        return this.opacity = 1;
+        return (this.opacity = 1);
       }
 
-      return this.opacity = 0;
+      return (this.opacity = 0);
     },
     scrollTop() {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: 'smooth'
-      })
+        behavior: "smooth"
+      });
     }
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
-  .back-to-top {
-    position: fixed;
-    transition: all 0.4s ease-in-out 0s;
-    bottom: 50px;
-    right: 50px;
-    cursor: pointer;
-  }
+.back-to-top {
+  position: fixed;
+  transition: all 0.4s ease-in-out 0s;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 2;
+}
 </style>
 <!-- var scrollTop = $('.back-to-top');
 $(window).scroll(function() {

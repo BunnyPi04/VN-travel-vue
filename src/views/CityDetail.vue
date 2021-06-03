@@ -256,7 +256,7 @@ export default {
 
 ::v-deep .slick-slider {
   width: 557px;
-  margin-top: 12px;
+  margin-top: 16px;
   position: relative;
 
   @include breakpoint-down(tablet) {
@@ -300,10 +300,12 @@ export default {
   margin-left: -4px;
 
   .slick-slide {
+    opacity: 0.8;
     // width: 133px;
 
-    :not(.slick-current) {
+    &.slick-current {
       position: relative;
+      opacity: 1;
 
       // &:after {
       //   content: '';
