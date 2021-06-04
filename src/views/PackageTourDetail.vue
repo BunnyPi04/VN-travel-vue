@@ -254,6 +254,173 @@
                 </div>
               </div>
             </div>
+
+            <h4>Inclusions</h4>
+            <div class="clusion">
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-inclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Accommodation based on twin/double sharing with daily
+                  breakfast (3* hotel category).
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-inclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Accommodation based on twin/double sharing with daily
+                  breakfast (3* hotel category). Accommodation based on
+                  twin/double sharing with daily breakfast (3* hotel category).
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-inclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  All sightseeing tickets.
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-inclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Vietnam visa approval letter.
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-inclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Private pick up and drop off service.
+                </div>
+              </div>
+            </div>
+
+            <h4>Exclusions</h4>
+            <div class="clusion">
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-exclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Accommodation based on twin/double sharing with daily
+                  breakfast (3* hotel category).
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-exclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Accommodation based on twin/double sharing with daily
+                  breakfast (3* hotel category). Accommodation based on
+                  twin/double sharing with daily breakfast (3* hotel category).
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-exclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  All sightseeing tickets.
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-exclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Vietnam visa approval letter.
+                </div>
+              </div>
+              <div class="clusion__item">
+                <div class="clusion__icon">
+                  <span class="nsy-icon nsy-exclusions"></span>
+                </div>
+                <div class="clusion__content">
+                  Private pick up and drop off service.
+                </div>
+              </div>
+            </div>
+
+            <h4>Notes</h4>
+            <div
+              class="tour-collapse-item collapse-custom"
+              :class="toggle4 ? 'toggle-active' : ''"
+            >
+              <label class="collapse-title">
+                <input
+                  type="checkbox"
+                  v-on:change="toggle4 = !toggle4"
+                  :value="toggle4"
+                />
+                <span>Tour Price</span>
+              </label>
+              <div class="wrapper">
+                <div class="inner" v-if="toggle4">
+                  Greeting at the airport, private pick up to your hotel. Check
+                  in hotel and free tiem at your leisure.
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tour-collapse-item collapse-custom"
+              :class="toggle5 ? 'toggle-active' : ''"
+            >
+              <label class="collapse-title">
+                <input
+                  type="checkbox"
+                  v-on:change="toggle5 = !toggle5"
+                  :value="toggle5"
+                />
+                <span>Deposit</span>
+              </label>
+              <div class="wrapper">
+                <div class="inner" v-if="toggle5">
+                  Greeting at the airport, private pick up to your hotel. Check
+                  in hotel and free tiem at your leisure.
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tour-collapse-item collapse-custom"
+              :class="toggle6 ? 'toggle-active' : ''"
+            >
+              <label class="collapse-title">
+                <input
+                  type="checkbox"
+                  v-on:change="toggle6 = !toggle6"
+                  :value="toggle6"
+                />
+                <span>Clothing & Packing Tips</span>
+              </label>
+              <div class="wrapper">
+                <div class="inner" v-if="toggle6">
+                  Greeting at the airport, private pick up to your hotel. Check
+                  in hotel and free tiem at your leisure.
+                </div>
+              </div>
+            </div>
+
+            <h4>Route Map</h4>
+            <div class="w-100">
+              <img class="w-100" src="@/assets/images/app/route_map.png" />
+            </div>
+
+            <div class="book-tour-map text-center">
+              <button class="golden-gradient-button">Book Now</button>
+            </div>
+
+            <TagShare :tags="tags" />
+            <ReviewForm />
           </div>
         </div>
         <div></div>
@@ -266,6 +433,8 @@
 
 <script>
 import SubBanner from "@/components/SubBanner";
+import TagShare from "@/components/TagShare";
+import ReviewForm from "@/components/ReviewForm";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
 // import ProductCarousel from 'vue-product-carousel';
@@ -280,7 +449,9 @@ export default {
     SubBanner,
     PlanTrip,
     VueSlickCarousel,
-    BackToTop
+    BackToTop,
+    ReviewForm,
+    TagShare
   },
   data() {
     return {
@@ -360,6 +531,32 @@ export default {
           image: "https://placem.at/places?w=800&h=800&random=4"
         }
       ],
+      tags: [
+        {
+          id: 1,
+          name: "4 Days"
+        },
+        {
+          id: 2,
+          name: "Vietnam"
+        },
+        {
+          id: 3,
+          name: "tour"
+        },
+        {
+          id: 4,
+          name: "beach"
+        },
+        {
+          id: 5,
+          name: "Quy Nhơn"
+        },
+        {
+          id: 6,
+          name: "beach"
+        }
+      ],
       settings: {
         dots: false,
         infinite: true,
@@ -396,7 +593,11 @@ export default {
       showingImage: "",
       toggle1: false,
       toggle2: false,
-      toggle3: false
+      toggle3: false,
+      toggle4: false,
+      toggle5: false,
+      toggle6: false,
+      toggle7: false
     };
   },
   mounted() {},
@@ -771,45 +972,16 @@ export default {
   }
 }
 
-.tour-collapse-item {
-  background-color: white;
+img {
   border-radius: 4px;
-  padding: 5px 10px;
-  margin-left: -5px;
-  margin-bottom: 6px;
+}
 
-  .collapse-title {
-    color: $ink;
-    text-transform: none;
-    background-color: $light-blue-bg;
-    border: 1px solid $grey-2;
+.book-tour-map {
+  padding: 40px 0px 37px;
+
+  button {
     font-size: 14px;
-    font-weight: 600;
-    line-height: 22px;
-    padding: 9px 16px;
-    border-radius: 4px;
-    margin-bottom: 0;
-  }
-
-  &.toggle-active {
-    .collapse-title {
-      color: white;
-      background-color: $green;
-
-      &:after {
-        background-color: white;
-      }
-    }
-  }
-
-  .wrapper {
-    .inner {
-      font-size: 14px;
-      line-height: 22px;
-      padding: 16px;
-      box-shadow: $box-shadow;
-      border-radius: 4px;
-    }
+    padding: 14.5px 50.5px;
   }
 }
 </style>
