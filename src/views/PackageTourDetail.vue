@@ -423,9 +423,103 @@
             <ReviewForm />
           </div>
         </div>
-        <div></div>
+
+        <!-- sidebar -->
+        <div>
+          <div class="side-widget">
+            <div class="widget__head">
+              How to book this tour?
+            </div>
+            <div class="widget__body">
+              <div class="list-item">
+                <span class="list-num">1</span>
+                <span>Send us your inquiry</span>
+              </div>
+              <div class="list-item">
+                <span class="list-num">2</span>
+                <span>Dealing with travel consultant</span>
+              </div>
+              <div class="list-item">
+                <span class="list-num">3</span>
+                <span>Final tour itinerary and rate</span>
+              </div>
+              <div class="list-item">
+                <span class="list-num">4</span>
+                <span>Deposit the tour</span>
+              </div>
+              <div class="list-item">
+                <span class="list-num">5</span>
+                <span>Receive the confirmed itinerary</span>
+              </div>
+              <div class="list-item">
+                <span class="list-num">6</span>
+                <span>Settle the balance when arrival</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-widget">
+            <div class="widget__head">
+              Why travel with us?
+            </div>
+            <div class="widget__body">
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>Recommended by 99% of TA users</span>
+              </div>
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>Best value for money</span>
+              </div>
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>100% private tour</span>
+              </div>
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>Professional tour operator</span>
+              </div>
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>Tailor made & flexible itinerary</span>
+              </div>
+              <div class="list-item">
+                <span class="nsy-icon nsy-inclusions"></span>
+                <span>Free visa approval letter</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-widget seller">
+            <div class="widget__head">
+              Best seller tours
+            </div>
+            <div class="widget__body">
+              <div class="tour-item" v-for="item in bestSeller" :key="item.id">
+                <div class="tour__image">
+                  <img
+                    :src="
+                      item.img
+                        ? require(`@/assets/images/${item.img}`)
+                        : require(`@/assets/images/app/unnamed.png`)
+                    "
+                  />
+                </div>
+                <div class="tour__info">
+                  <h6>{{ item.name }}</h6>
+                  <div class="tour__price">
+                    <span>From </span>
+                    <span class="price">{{ item.price }} </span>
+                    <span>pp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <GridTour title="Similar Tour" :itemList="tourList" />
     <PlanTrip />
     <BackToTop />
   </div>
@@ -437,12 +531,13 @@ import TagShare from "@/components/TagShare";
 import ReviewForm from "@/components/ReviewForm";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
-// import ProductCarousel from 'vue-product-carousel';
+import GridTour from "@/components/GridTour";
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import tourList from "@/sampleData/tourList";
 
 export default {
   components: {
@@ -451,11 +546,13 @@ export default {
     VueSlickCarousel,
     BackToTop,
     ReviewForm,
-    TagShare
+    TagShare,
+    GridTour
   },
   data() {
     return {
       switcher: 1,
+      tourList: tourList["tourList"],
       tour: {
         name: "Quy Nhon Beach Escape",
         duration: "21 Days",
@@ -590,6 +687,38 @@ export default {
           }
         ]
       },
+      bestSeller: [
+        {
+          id: 1,
+          name: "Essence of Vietnam",
+          img: "app/post1.png",
+          price: "2,136"
+        },
+        {
+          id: 2,
+          name: "Taste of Vietnam",
+          img: "app/post1.png",
+          price: "2,136"
+        },
+        {
+          id: 3,
+          name: "Vietnam Discovery",
+          img: "app/post1.png",
+          price: "2,136"
+        },
+        {
+          id: 4,
+          name: "Amazing Vietnam",
+          img: "app/post1.png",
+          price: "2,136"
+        },
+        {
+          id: 5,
+          name: "Vietnam Family Holiday",
+          img: "app/post1.png",
+          price: "2,136"
+        }
+      ],
       showingImage: "",
       toggle1: false,
       toggle2: false,
@@ -660,6 +789,11 @@ export default {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 24px;
+  margin-bottom: 40px;
+
+  @include breakpoint-down(tablet) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   .place-carousel {
     flex: 2;
@@ -696,6 +830,11 @@ export default {
 
       &__body {
         margin-top: 24px;
+
+        @include breakpoint-down(tablet) {
+          width: 400px;
+          margin: 0 auto;
+        }
 
         p {
           margin-bottom: 13px;
@@ -734,6 +873,10 @@ export default {
 
         .golden-gradient-button {
           margin-top: 24px;
+
+          @include breakpoint-down(tablet) {
+            width: 224px;
+          }
         }
       }
     }
@@ -876,6 +1019,10 @@ export default {
     display: flex;
     align-items: center;
     font-size: 14px;
+
+    @include breakpoint-down(tablet) {
+      font-size: 13px;
+    }
 
     &:after {
       content: "";

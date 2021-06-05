@@ -60,6 +60,12 @@ export default new Router({
       component: () => import("@/views/PlanYourTrip")
     },
     {
+      name: "package-tour",
+      path: "/package-tour/",
+      props: true,
+      component: () => import("@/views/PackageTour")
+    },
+    {
       name: "package-tour-detail",
       path: "/package-tour/:slug/",
       props: true,

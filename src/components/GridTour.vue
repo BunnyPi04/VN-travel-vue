@@ -1,15 +1,12 @@
 <template>
-  <div class="best-selling-tour">
-    <div class="container">
-      <div class="page-section-head">
-        <div class="page-section__title">
-          Best Selling Tour Packages 2020
-        </div>
-        <div class="page-section__comment">
-          Many our clients have started the journey to discover Southeast Asia
-          with these tour packages
-        </div>
+  <div class="similar-section">
+    <div class="page-section-head">
+      <div class="page-section__title">
+        {{ title }}
       </div>
+      <hr />
+    </div>
+    <div class="page-similar heri-container">
       <div class="page-section-main product-selling__list-container">
         <div
           class="product__list tour"
@@ -32,7 +29,7 @@
               </div>
               <div class="product__content__rate">
                 <StarRate :star="parseInt(item.rate)" :disabled="true" />
-                ({{ item.rateCount }})
+                (120)
               </div>
               <div class="tour-info">
                 <div class="info-item">
@@ -40,7 +37,7 @@
                     <span class="nsy-icon nsy-calendar"></span>
                   </div>
                   <div class="text">
-                    <span class="text-green">{{ item.duration }} Days</span>
+                    <span class="text-green">21 Days</span>
                   </div>
                 </div>
                 <div class="info-item">
@@ -48,8 +45,8 @@
                     <span class="nsy-icon nsy-ticket"></span>
                   </div>
                   <div class="text weight-600">
-                    <span>From </span>
-                    <span class="text-green">${{ item.tourPrice }} </span>
+                    <span>From</span>
+                    <span class="text-green">$2,136</span>
                     <span>pp</span>
                   </div>
                 </div>
@@ -58,7 +55,7 @@
                     <span class="nsy-icon nsy-location"></span>
                   </div>
                   <div class="text font-smaller">
-                    {{ item.tourStartAt }}
+                    Hanoi, Vietnam
                   </div>
                 </div>
                 <div class="info-item">
@@ -66,7 +63,7 @@
                     <span class="nsy-icon nsy-arrow-right"></span>
                   </div>
                   <div class="text font-smaller">
-                    {{ item.tourDestination }}
+                    Vientiane, Laos
                   </div>
                 </div>
               </div>
@@ -81,9 +78,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="explore text-center">
-        <a href="">Explore Now</a>
       </div>
     </div>
   </div>
@@ -105,4 +99,57 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
+.similar-section {
+  background-color: $light-blue-bg;
+  padding-bottom: 64px;
+}
+.page-section-head {
+  padding-top: 48px;
+  text-transform: uppercase;
+
+  .page-section__title {
+    font-size: 24px;
+    line-height: 22px;
+    padding-bottom: 0;
+  }
+}
+
+hr {
+  width: 63px;
+  height: 2px;
+  background-color: $ink;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.page-similar {
+  display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+  margin-bottom: 42px;
+
+  @include breakpoint-down(tablet) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  img {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .place-name {
+    color: $dark-blue;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 22px;
+    margin-top: 24px;
+    text-transform: uppercase;
+
+    @include breakpoint-down(tablet) {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}
 </style>

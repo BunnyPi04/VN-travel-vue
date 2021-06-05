@@ -28,7 +28,7 @@
           </li>
           <li>
             <h2 class="section-title">
-              <a href="#menu-space">Package Tour</a>
+              <router-link to="/package-tour/">Package Tour</router-link>
             </h2>
           </li>
           <li>
@@ -73,7 +73,9 @@
         <div class="menu-item">
           <router-link to="/destinations/">Destination</router-link>
         </div>
-        <div class="menu-item"><a href="#menu-space">Package Tour</a></div>
+        <div class="menu-item">
+          <router-link to="/package-tour/">Package Tour</router-link>
+        </div>
         <div class="menu-item">
           <router-link to="/plan-your-trip/">Plan your trip</router-link>
         </div>
