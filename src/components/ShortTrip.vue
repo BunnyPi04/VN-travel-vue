@@ -367,8 +367,10 @@ export default {
       }
 
       .info-item {
+        font-size: 14px;
+        margin-top: 0;
         &:not(:first-child) {
-          margin-top: 18px;
+          // margin-top: 18px;
         }
       }
     }
@@ -496,5 +498,8 @@ export default {
       }
     }
   }
+}
+::v-deep .rate-star {
+  display: inline-block;
 }
 </style>
