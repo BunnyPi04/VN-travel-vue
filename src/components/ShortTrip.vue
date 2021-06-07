@@ -192,8 +192,13 @@
             </div> -->
           </div>
         </div>
+
         <div class="widget">
           <TourFilter />
+          <img
+            class="w-100 cerfiticate"
+            src="@/assets/images/app/certificate.png"
+          />
         </div>
       </div>
       <div class="explore text-center">
@@ -319,6 +324,10 @@ export default {
     grid-template-columns: 2fr 1fr;
     grid-gap: 24px;
 
+    @include breakpoint-down(tablet) {
+      grid-template-columns: 1fr;
+    }
+
     .tour-list {
       &-container {
         display: grid;
@@ -386,119 +395,12 @@ export default {
   }
 }
 
-::v-deep .v-select {
-  min-width: 160px;
-  position: relative;
-  background-color: white;
-
-  .vs {
-    &__dropdown-toggle {
-      // position: relative;
-    }
-
-    &__actions {
-      display: flex;
-      align-items: center;
-      padding: 4px 17px 0 3px;
-    }
-
-    &__selected-options {
-      display: flex;
-      flex-basis: 100%;
-      flex-grow: 1;
-      flex-wrap: wrap;
-      padding: 0 2px;
-      position: relative;
-    }
-
-    &__dropdown-toggle {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      display: flex;
-      background: none;
-      border: 1px solid rgba(60, 60, 60, 0.26);
-      border-radius: 4px;
-      cursor: pointer;
-      white-space: normal;
-      min-height: 40px;
-    }
-
-    &__search,
-    .vs__search:focus {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      line-height: 1.4;
-      font-size: 1em;
-      border: 1px solid transparent;
-      border-left: none;
-      outline: none;
-      margin: 4px 0 0;
-      padding: 0 7px;
-      background: none;
-      box-shadow: none;
-      width: 0;
-      max-width: 100%;
-      flex-grow: 1;
-      z-index: 1;
-    }
-
-    &__selected {
-      display: flex;
-      align-items: center;
-      background-color: transparent;
-      border-color: transparent;
-      border-radius: 4px;
-      color: $black;
-      line-height: 1.4;
-      padding: 0 0.25em;
-      z-index: 0;
-      padding: 10px;
-    }
-
-    &__clear {
-      fill: rgba(60, 60, 60, 0.5);
-      padding: 0;
-      border: 0;
-      background-color: transparent;
-      cursor: pointer;
-      margin-right: 8px;
-    }
-
-    &__open-indicator {
-      fill: rgba(60, 60, 60, 0.5);
-      transform: scale(1);
-      transition: transform 0.15s cubic-bezier(1, -0.115, 0.975, 0.855);
-      transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);
-    }
-  }
-
-  ul {
-    list-style: none;
-    border: 1px solid rgba(60, 60, 60, 0.26);
-    padding-left: 0px;
-    margin-bottom: 0;
-    border-radius: 4px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(100%);
-    width: 100%;
-    background-color: white;
-
-    li {
-      color: $ink !important;
-      cursor: pointer;
-      text-align: left;
-      padding: 7px 10px;
-
-      &:hover {
-        background-color: $light-blue-bg;
-      }
-    }
+.widget {
+  @include breakpoint-down(tablet) {
+    display: none;
   }
 }
+
 ::v-deep .rate-star {
   display: inline-block;
 }

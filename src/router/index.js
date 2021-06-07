@@ -70,12 +70,30 @@ export default new Router({
       path: "/package-tour/:slug/",
       props: true,
       component: () => import("@/views/PackageTourDetail")
+    },
+    {
+      name: "short-tour",
+      path: "/short-tour/",
+      props: true,
+      component: () => import("@/views/ShortTour")
+    },
+    {
+      name: "news",
+      path: "/news/",
+      props: true,
+      component: () => import("@/views/News")
+    },
+
+    {
+      name: "news-detail",
+      path: "/news/:slug",
+      component: () => import("@/views/NewsDetail")
+    },
+    {
+      name: "cart",
+      path: "/cart/",
+      component: () => import("@/views/Cart")
     }
-    // {
-    //   name: "news-detail",
-    //   path: "/news/:slug",
-    //   component: () => import("@/views/NewsDetail")
-    // },
     // {
     //   name: "login",
     //   path: "/login",

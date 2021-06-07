@@ -165,9 +165,26 @@
         <div class="wrapper">
           <transition name="slide">
             <div class="price-range" v-if="toggle5">
+              <div class="price-num">
+                <div>
+                  <span>From</span>
+                  <div class="price-input">
+                    <span>$</span>
+                    <input type="number" v-model="minValue" />
+                  </div>
+                </div>
+                <div>
+                  <span>To</span>
+                  <div class="price-input">
+                    <span>$</span>
+                    <input type="number" v-model="maxValue" />
+                  </div>
+                </div>
+              </div>
+
               <div class="track-container">
-                <span class="range-value min">{{ minValue }} </span>
-                <span class="range-value max">{{ maxValue }}</span>
+                <!--                 <span class="range-value min">{{ minValue }} </span>
+                <span class="range-value max">{{ maxValue }}</span> -->
                 <div class="track" ref="_vpcTrack"></div>
                 <div class="track-highlight" ref="trackHighlight"></div>
                 <button class="track-btn track1" ref="track1"></button>
@@ -493,12 +510,14 @@ export default {
   width: 100%;
   height: 0.5rem;
   background-color: #f0f0f0;
+  border-radius: 10px;
 
   &-container {
-    width: 100%;
+    width: 90%;
     position: relative;
     cursor: pointer;
     height: 0.5rem;
+    margin: 0 auto;
   }
 
   &-highlight {
@@ -539,7 +558,43 @@ export default {
 }
 
 .price-range {
-  padding: 20px 20px;
+  padding: 20px 0;
+
+  .price-num {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+    margin-bottom: 32px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .price-input {
+        border-radius: 4px;
+        border: 1px solid $grey;
+        line-height: 17px;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 11px 5px 11px 16px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 50px;
+          border: none;
+          line-height: 17px;
+          font-size: 13px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 ::v-deep {

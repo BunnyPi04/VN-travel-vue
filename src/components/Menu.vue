@@ -37,7 +37,9 @@
             </h2>
           </li>
           <li>
-            <h2 class="section-title"><a href="#menu-info">News</a></h2>
+            <h2 class="section-title">
+              <router-link to="/news/">News</router-link>
+            </h2>
           </li>
           <li>
             <h2 class="section-title"><a href="#menu-info">Contact Us</a></h2>
@@ -79,7 +81,7 @@
         <div class="menu-item">
           <router-link to="/plan-your-trip/">Plan your trip</router-link>
         </div>
-        <div class="menu-item"><a href="#menu-info">News</a></div>
+        <div class="menu-item"><router-link to="/news/">News</router-link></div>
         <div class="menu-item"><a href="#menu-info">Contact Us</a></div>
         <div class="menu-item">
           <img class="search-icon" src="@/assets/images/app/search.svg" />
@@ -87,7 +89,9 @@
       </div>
       <div class="register-cart">
         <div class="cart">
-          <img src="@/assets/images/app/ic_cart.svg" />
+          <router-link to="/cart/"
+            ><img src="@/assets/images/app/ic_cart.svg"
+          /></router-link>
         </div>
         <div class="login"><button>Login</button></div>
         <div class="register-button">

@@ -54,7 +54,9 @@
         </div>
         <div class="news-content-item__content" v-html="item.content"></div>
       </div>
+      <TagShare :tags="tags" />
     </div>
+    <RelatedItems title="Related Post" :itemList="postList" />
     <PlanTrip />
     <BackToTop />
   </div>
@@ -64,12 +66,16 @@
 import SubBanner from "@/components/SubBanner";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
+import RelatedItems from "@/components/RelatedItems";
+import TagShare from "@/components/TagShare";
 import practicalitiesList from "@/sampleData/practicalitiesList";
 
 export default {
   components: {
     SubBanner,
     BackToTop,
+    RelatedItems,
+    TagShare,
     PlanTrip
   },
   data() {
@@ -132,7 +138,55 @@ export default {
             name: "Vietnam"
           }
         ]
-      }
+      },
+      postList: [
+        {
+          id: 1,
+          name: "Basic Vietnamese Phrase",
+          image: "https://placem.at/places?w=800&h=800&random=1"
+        },
+        {
+          id: 2,
+          name: "7 Top Tourist Attractions in Hue",
+          image: "https://placem.at/places?w=800&h=800&random=8"
+        },
+        {
+          id: 3,
+          name: "MVisa To Laos",
+          image: "https://placem.at/places?w=800&h=800&random=3"
+        },
+        {
+          id: 4,
+          name: "The 9 Best Dishes To Eat in Vietnam",
+          image: "https://placem.at/places?w=800&h=800&random=4"
+        }
+      ],
+      tags: [
+        {
+          id: 1,
+          name: "4 Days"
+        },
+        {
+          id: 2,
+          name: "Vietnam"
+        },
+        {
+          id: 3,
+          name: "tour"
+        },
+        {
+          id: 4,
+          name: "beach"
+        },
+        {
+          id: 5,
+          name: "Quy Nhơn"
+        },
+        {
+          id: 6,
+          name: "beach"
+        }
+      ]
     };
   },
   mounted() {},
@@ -240,6 +294,23 @@ export default {
     img {
       max-width: 100% !important;
     }
+  }
+}
+
+::v-deep .related-section {
+  background-color: $light-blue-bg;
+  padding-bottom: 66px;
+
+  .page-section-head {
+    padding-bottom: 24px;
+
+    hr {
+      margin-bottom: 0;
+    }
+  }
+
+  .place-name {
+    text-transform: none;
   }
 }
 </style>
