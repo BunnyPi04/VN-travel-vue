@@ -128,68 +128,6 @@
               :maxVisibleButtons="5"
               @pagechanged="onPageChange"
             />
-            <!-- <div class="product__list tour" v-for="item in itemList.slice(0, 3)" :key="item.id">
-            <div class="product__item">
-              <div class="product__image">
-                <img :src="item.img
-                  ? require(`@/assets/images/${item.img}`)
-                  : require(`@/assets/images/app/unnamed.png`)">
-              </div>
-              <div class="product__content">
-                <div class="product__content__title">
-                  {{ item.name }}
-                </div>
-                <div class="product__content__rate">
-                  <StarRate :star="parseInt(item.rate)" :disabled="true"/>
-                  ({{ item.rateCount }})
-                </div>
-                <div class="tour-info">
-                  <div class="info-item">
-                    <div class="icon">
-                      <span class="nsy-icon nsy-calendar"></span>
-                    </div>
-                    <div class="text">
-                      <span class="text-green">{{ item.duration }} Days</span>
-                    </div>
-                  </div>
-                  <div class="info-item">
-                    <div class="icon">
-                      <span class="nsy-icon nsy-ticket"></span>
-                    </div>
-                    <div class="text weight-600">
-                      <span>From </span>
-                      <span class="text-green">${{ item.tourPrice }} </span>
-                      <span>pp</span>
-                    </div>
-                  </div>
-                  <div class="info-item">
-                    <div class="icon">
-                      <span class="nsy-icon nsy-location"></span>
-                    </div>
-                    <div class="text font-smaller">
-                      {{ item.tourStartAt }}
-                    </div>
-                  </div>
-                  <div class="info-item">
-                    <div class="icon">
-                      <span class="nsy-icon nsy-arrow-right"></span>
-                    </div>
-                    <div class="text font-smaller">
-                      {{ item.tourDestination }}
-                    </div>
-                  </div>
-                </div>
-                <div class="tour-button">
-                  <div class="book-button text-right">
-                    <button class="golden-gradient-button">Book Now</button>
-                  </div>
-                  <div class="text-detail text-left">
-                    <a href="#">Tour detail</a> →
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div> -->
           </div>
         </div>
 

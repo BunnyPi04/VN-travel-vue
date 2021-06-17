@@ -99,6 +99,15 @@ a {
     color: unset;
 }
 
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.my-0 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 .nsy-icon {
     width: 50px;
     height: 50px;
@@ -1339,6 +1348,10 @@ a {
         padding: 80px 105px 72px;
     }
 
+    @include breakpoint-down(phone) {
+      padding: 72px 24px;
+    }
+
     h3 {
         font-size: 32px;
         color: white;
@@ -1844,7 +1857,7 @@ a {
     top: 0;
     left: 0;
     background-color: rgba($ink, 0.9);
-    z-index: 1;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;

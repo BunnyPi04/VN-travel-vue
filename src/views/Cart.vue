@@ -159,7 +159,7 @@ import SubBanner from "@/components/SubBanner";
 import PlanTrip from "@/components/home/PlanTrip";
 import TravelTips from "@/components/planTrip/TravelTips";
 import BackToTop from "@/components/BackToTop";
-import CheckoutModal from "@/components/CheckoutModal";
+import CheckoutModal from "@/components/cart/CheckoutModal";
 
 export default {
   components: {

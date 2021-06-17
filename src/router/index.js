@@ -93,7 +93,13 @@ export default new Router({
       name: "cart",
       path: "/cart/",
       component: () => import("@/views/Cart")
+    },
+    {
+      name: "contact-us",
+      path: "/contact-us/",
+      component: () => import("@/views/ContactUs")
     }
+
     // {
     //   name: "login",
     //   path: "/login",

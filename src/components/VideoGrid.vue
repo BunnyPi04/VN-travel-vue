@@ -9,37 +9,55 @@
       <transition name="slide">
         <div class="video-grid grid-container" v-if="toggle">
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
           </div>
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
           </div>
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
           </div>
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
           </div>
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
           </div>
           <div class="video-item grid-item">
-            <div class="video-item__image">
+            <div
+              class="video-item__image"
+              @click="openVideo('https://www.youtube.com/embed/84k3v5jYB58')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
             <div class="video-item__title">Hanoi</div>
@@ -47,15 +65,34 @@
         </div>
       </transition>
     </div>
+    <transition name="fade">
+      <MediaModal
+        v-if="modalVideo"
+        v-model="modalVideo"
+        :url="url"
+        type="video"
+      />
+    </transition>
   </div>
 </template>
 <script>
+import MediaModal from "@/components/destination/MediaModal";
 export default {
-  components: {},
+  components: {
+    MediaModal
+  },
   data() {
     return {
-      toggle: true
+      toggle: true,
+      modalVideo: false,
+      url: ""
     };
+  },
+  methods: {
+    openVideo(url) {
+      this.modalVideo = true;
+      this.url = url;
+    }
   }
 };
 </script>
@@ -79,6 +116,7 @@ export default {
       &__image {
         border-radius: 4px;
         overflow: hidden;
+        cursor: pointer;
 
         img {
           width: 100%;

@@ -75,7 +75,9 @@
                   <button class="golden-gradient-button">Book Now</button>
                 </div>
                 <div class="text-detail text-left">
-                  <a href="#">Tour detail</a> →
+                  <router-link to="/package-tour/quy-nhon">
+                    Tour detail→
+                  </router-link>
                 </div>
               </div>
             </div>

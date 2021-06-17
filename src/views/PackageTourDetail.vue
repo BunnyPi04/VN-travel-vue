@@ -100,7 +100,12 @@
                 <div>{{ tour.to }}</div>
               </div>
               <div class="text-center">
-                <button class="golden-gradient-button">Book Now</button>
+                <button
+                  class="golden-gradient-button"
+                  @click="modalBooking = true"
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -522,6 +527,9 @@
     <GridTour title="Similar Tour" :itemList="tourList" />
     <PlanTrip />
     <BackToTop />
+    <transition name="fade">
+      <PackageBookingModal v-if="modalBooking" v-model="modalBooking" />
+    </transition>
   </div>
 </template>
 
@@ -532,6 +540,7 @@ import ReviewForm from "@/components/ReviewForm";
 import PlanTrip from "@/components/home/PlanTrip";
 import BackToTop from "@/components/BackToTop";
 import GridTour from "@/components/GridTour";
+import PackageBookingModal from "@/components/package/PackageBookingModal";
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
@@ -547,11 +556,13 @@ export default {
     BackToTop,
     ReviewForm,
     TagShare,
+    PackageBookingModal,
     GridTour
   },
   data() {
     return {
       switcher: 1,
+      modalBooking: false,
       tourList: tourList["tourList"],
       tour: {
         name: "Quy Nhon Beach Escape",

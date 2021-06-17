@@ -42,7 +42,9 @@
             </h2>
           </li>
           <li>
-            <h2 class="section-title"><a href="#menu-info">Contact Us</a></h2>
+            <h2 class="section-title">
+              <router-link to="/contact-us/">Contact Us</router-link>
+            </h2>
           </li>
         </ul>
       </nav>
@@ -81,8 +83,12 @@
         <div class="menu-item">
           <router-link to="/plan-your-trip/">Plan your trip</router-link>
         </div>
-        <div class="menu-item"><router-link to="/news/">News</router-link></div>
-        <div class="menu-item"><a href="#menu-info">Contact Us</a></div>
+        <div class="menu-item">
+          <router-link to="/news/">News</router-link>
+        </div>
+        <div class="menu-item">
+          <router-link to="/contact-us/">Contact Us</router-link>
+        </div>
         <div class="menu-item">
           <img class="search-icon" src="@/assets/images/app/search.svg" />
         </div>

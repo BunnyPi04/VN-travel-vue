@@ -9,67 +9,116 @@
       <transition name="slide">
         <div class="gallery-grid grid-container" v-if="toggle">
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
           <div class="gallery-item grid-item">
-            <div class="gallery-item__image">
+            <div
+              class="gallery-item__image"
+              @click="openImage('app/video-image.png')"
+            >
               <img src="@/assets/images/app/video-image.png" />
             </div>
           </div>
         </div>
       </transition>
     </div>
+    <transition name="fade">
+      <MediaModal
+        v-if="modalImage"
+        v-model="modalImage"
+        :url="url"
+        type="image"
+      />
+    </transition>
   </div>
 </template>
 <script>
+import MediaModal from "@/components/destination/MediaModal";
 export default {
-  components: {},
+  components: {
+    MediaModal
+  },
   data() {
     return {
-      toggle: true
+      toggle: true,
+      modalImage: false,
+      url: ""
     };
+  },
+  methods: {
+    openImage(url) {
+      this.modalImage = true;
+      this.url = url;
+    }
   }
 };
 </script>
@@ -97,6 +146,7 @@ export default {
 
         img {
           width: 100%;
+          cursor: pointer;
         }
       }
 
