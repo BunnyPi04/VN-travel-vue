@@ -55,6 +55,23 @@
         @click="openNav = !openNav"
         ><span></span
       ></a>
+      <div class="logo">
+        <h1>
+          <img
+            class="animBlock notViewed"
+            data-position="bottom"
+            data-offset="300"
+            src="@/assets/images/app/logo.svg"
+          />
+        </h1>
+      </div>
+      <div class="register-cart">
+        <div class="cart">
+          <router-link to="/cart/"
+            ><img src="@/assets/images/app/ic_cart.svg"
+          /></router-link>
+        </div>
+      </div>
     </div>
     <div class="menu w-100">
       <div class="logo">
