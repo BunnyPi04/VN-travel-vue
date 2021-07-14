@@ -323,6 +323,10 @@ a {
 .carousel-inner img {
     width: 100%;
     height: 100%;
+
+    @include breakpoint-down(phone) {
+        height: 256px;
+    }
 }
 .menu {
     background-color: transparent;
@@ -402,6 +406,35 @@ a {
 
         @include breakpoint-down(tablet) {
             display: block;
+        }
+
+        @include breakpoint-down(phone) {
+            .logo {
+                position: absolute;
+                top: 8px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                text-align: center;
+                display: inline-flex;
+                justify-content: center;
+
+                h1 {
+                    display: inline-block;
+                    margin: 0;
+
+                    img {
+                        height: 32px;
+                        display: block;
+                    }
+                }
+            }
+
+            .register-cart {
+                position: absolute;
+                right: 24px;
+                top: 12px;
+            }
         }
     }
 }
@@ -488,7 +521,7 @@ a {
     position: fixed;
     left: 3%;
     text-indent: 100%;
-    top: 20px;
+    top: 8px;
     white-space: nowrap;
     width: 44px;
     z-index: 99999;
@@ -744,6 +777,11 @@ a {
         font-size: 32px;
         line-height: 46px;
     }
+
+    @include breakpoint-down(phone) {
+        font-size: 24px;
+        line-height: 35px;
+    }
 }
 .within {
     font-family: Automobile;
@@ -757,6 +795,12 @@ a {
         font-size: 80px;
         line-height: 92px;
         margin-top: -40px;
+    }
+
+    @include breakpoint-down(phone) {
+        font-size: 64px;
+        line-height: 74px;
+        margin-top: -28px;
     }
 }
 .page-section {
@@ -1026,6 +1070,10 @@ a {
         padding: 48px 126px 52px;
     }
 
+    @include breakpoint-down(phone) {
+        padding: 64px 24px 40px;
+    }
+
     .mini-intro {
         line-height: 24px;
         color: white;
@@ -1033,6 +1081,11 @@ a {
         @include breakpoint-down(tablet) {
             font-size: 14px;
             padding: 0 20px;
+        }
+
+        @include breakpoint-down(phone) {
+            font-size: 13px;
+            line-height: 20px;
         }
     }
 
@@ -1044,6 +1097,11 @@ a {
         display: inline-flex;
         margin-top: 16px;
         color: white;
+
+        @include breakpoint-down(phone) {
+            font-size: 14px;
+            line-height: 22px;
+        }
     }
 
     .book-button {
@@ -1123,8 +1181,12 @@ a {
             padding: 0 12px;
 
             &-image {
-                    img {
+                img {
                     border-radius: 50%;
+
+                    @include breakpoint-down(phone) {
+                        width: 144px;
+                    }
                 }
             }
         }
@@ -1451,6 +1513,10 @@ a {
         @include breakpoint-down(tablet) {
             grid-template-columns: repeat(2, 1fr) !important;
         }
+
+        @include breakpoint-down(phone) {
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
     }
 
     .travel-post {
@@ -1503,6 +1569,10 @@ a {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 24px;
+
+            @include breakpoint-down(phone) {
+                grid-template-columns: repeat(1, 1fr);
+            }
         }
     }
 
@@ -1510,6 +1580,10 @@ a {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 24px;
+
+        @include breakpoint-down(phone) {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 }
 
@@ -1524,6 +1598,11 @@ a {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 24px;
+
+        @include breakpoint-down(phone) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
     }
 
     &__sample {
